@@ -1,0 +1,39 @@
+{
+  "name": "bennetsen-portscanner",
+  "version": "1.0.0",
+  "description": "Fast concurrent cross-platform network and port scanner with a VS Code-inspired desktop UI",
+  "main": "dist-electron/main.js",
+  "homepage": "https://github.com/MRBennetsen/Bennetsen-Portscanner",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MRBennetsen/Bennetsen-Portscanner.git"
+  },
+  "author": "MRBennetsen",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && tsc -p tsconfig.electron.json && electron .\"",
+    "build:scanner": "node scripts/build-scanner.mjs",
+    "build:ui": "vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "build": "npm run build:ui && npm run build:electron",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit",
+    "package:linux": "npm run build:scanner && npm run build && electron-builder --linux --publish never",
+    "package:win": "npm run build:scanner && npm run build && electron-builder --win --publish never"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.19",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "wait-on": "^8.0.2"
+  }
+}

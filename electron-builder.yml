@@ -1,0 +1,46 @@
+appId: com.mrbennetsen.portscanner
+productName: Bennetsen Portscanner
+copyright: Copyright © 2026 MRBennetsen
+directories:
+  output: release
+  buildResources: build
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - package.json
+asar: true
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  icon: build/icon.ico
+  extraResources:
+    - from: scanner/bin/portscanner.exe
+      to: bin/portscanner.exe
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  artifactName: Bennetsen-Portscanner-${version}-win-${arch}-setup.${ext}
+portable:
+  artifactName: Bennetsen-Portscanner-${version}-win-${arch}-portable.${ext}
+linux:
+  target:
+    - target: AppImage
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+  category: Network
+  maintainer: MRBennetsen
+  synopsis: Fast concurrent network and port scanner
+  description: High-performance cross-platform network and port scanner with auto-detected interfaces, service presets, banner grabbing, and external client launchers.
+  icon: build/icon.png
+  artifactName: Bennetsen-Portscanner-${version}-linux-${arch}.${ext}
+  extraResources:
+    - from: scanner/bin/portscanner
+      to: bin/portscanner
