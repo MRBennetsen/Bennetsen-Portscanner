@@ -1,5 +1,5 @@
 appId: com.mrbennetsen.portscanner
-productName: Bennetsen Portscanner
+productName: Bennetsen-Portscanner
 copyright: Copyright © 2026 MRBennetsen
 directories:
   output: release
