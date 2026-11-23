@@ -29,6 +29,7 @@ function getAppIconPath(): string | undefined {
 }
 
 function createWindow() {
+  const iconPath = getAppIconPath();
   mainWindow = new BrowserWindow({
     width: 1360,
     height: 840,
@@ -37,7 +38,7 @@ function createWindow() {
     backgroundColor: '#1e1e1e',
     title: 'Bennetsen Portscanner',
     autoHideMenuBar: true,
-    icon: getAppIconPath(),
+    ...(iconPath ? { icon: iconPath } : {}),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,

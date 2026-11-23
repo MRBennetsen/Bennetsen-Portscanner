@@ -44,3 +44,5 @@ linux:
   extraResources:
     - from: scanner/bin/portscanner
       to: bin/portscanner
+deb:
+  afterInstall: build/linux/after-install.sh
